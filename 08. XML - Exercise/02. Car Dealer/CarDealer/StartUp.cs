@@ -2,10 +2,11 @@
 using CarDealer.Data;
 using CarDealer.DataTransferObjects;
 using CarDealer.Models;
-using Castle.Core.Resource;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -95,6 +96,7 @@ namespace CarDealer
             var partsDto = (List<PartDto>)serializer.Deserialize(File.OpenRead(inputXml));
             var parts = mapper.Map<List<Part>>(partsDto);
 
+            var count = 0;
             foreach (var part in parts)
             {
                 if (!context.Suppliers.Any(s => s.Id == part.SupplierId))
@@ -103,60 +105,68 @@ namespace CarDealer
                 }
 
                 context.Parts.Add(part);
+                count++;
             }
 
             context.SaveChanges();
 
-            return $"Successfully imported {parts.Count}";
+            return $"Successfully imported {count}";
         }
 
         public static string ImportCars(CarDealerContext context, string inputXml)
         {
-            var ccc = context.Cars;
-
             var serializer = new XmlSerializer(typeof(List<CarDto>), new XmlRootAttribute("Cars"));
             var carsDto = (List<CarDto>)serializer.Deserialize(File.OpenRead(inputXml));
 
             var cars = mapper.Map<List<Car>>(carsDto);
+            var parts = context.Parts.ToList();
 
-            var parts = new List<List<PartCar>>();
             foreach (var car in cars)
             {
                 var setOfParts = new List<PartCar>();
-
                 foreach (var part in car.PartCars)
                 {
-                    if (!context.Parts.Any(p => p.Id == part.PartId) ||
-                        setOfParts.Any(p => p.PartId == part.PartId))
+                    if (!parts.Any(p => p.Id == part.PartId))
                     {
                         continue;
                     }
 
-                    setOfParts.Add(part);
+                    if (!setOfParts.Any(sp => sp.PartId == part.PartId))
+                    {
+                        setOfParts.Add(part);
+                    }
                 }
 
-                car.PartCars = new List<PartCar>();
-                parts.Add(setOfParts);
+                car.PartCars = setOfParts;
             }
 
             context.Cars.AddRange(cars);
             context.SaveChanges();
 
-            var allParts = context.Parts.ToList();
             var contextCars = context.Cars.ToList();
+
             foreach (var car in contextCars)
             {
-                foreach (var part in parts)
+                car.Sales = new List<Sale>();
+                var carParts = new List<PartCar>();
+
+                foreach (var part in car.PartCars)
                 {
-                    foreach (var carPart in part)
+                    if (!parts.Any(p => p.Id == part.PartId))
                     {
-                        carPart.Car = car;
-                        carPart.CarId = car.Id;
-                        carPart.Part = allParts.FirstOrDefault(p => p.Id == carPart.PartId);
+                        continue;
                     }
 
-                    car.PartCars = part;
+                    if (!carParts.Any(cp => cp.PartId == part.PartId))
+                    {
+                        part.Car = car;
+                        part.CarId = car.Id;
+                        part.Part = parts.FirstOrDefault(p => p.Id == part.PartId);
+                        carParts.Add(part);
+                    }
                 }
+
+                car.PartCars = carParts;
             }
 
             context.SaveChanges();
@@ -196,24 +206,6 @@ namespace CarDealer
             }
 
             context.SaveChanges();
-
-            var allCustomers = context.Customers.ToList();
-            foreach (var sale in sales)
-            {
-                var car = allCars.FirstOrDefault(c => c.Id == sale.CarId);
-
-                if (car != null)
-                {
-                    car.Sales.Add(sale);
-                }
-
-                var customer = allCustomers.FirstOrDefault(c => c.Id == sale.CustomerId);
-
-                if (customer != null)
-                {
-                    customer.Sales.Add(sale);
-                }
-            }
 
             return $"Successfully imported {count}";
         }
@@ -315,6 +307,7 @@ namespace CarDealer
         public static string GetCarsWithTheirListOfParts(CarDealerContext context)
         {
             var cars = context.Cars
+                .Include(c => c.PartCars)
                 .Select(c => new
                 {
                     c.Make,
@@ -367,6 +360,8 @@ namespace CarDealer
         public static string GetTotalSalesByCustomer(CarDealerContext context)
         {
             var customers = context.Customers
+                .Include(c => c.Sales)
+                .ThenInclude(s => s.Car.PartCars)
                 .Where(c => c.Sales.Any())
                 .Select(c => new
                 {
@@ -400,6 +395,7 @@ namespace CarDealer
         public static string GetSalesWithAppliedDiscount(CarDealerContext context)
         {
             var sales = context.Sales
+                .Include(s => s.Car.PartCars)
                 .Select(s => new
                 {
                     s.Car,
@@ -417,15 +413,23 @@ namespace CarDealer
             foreach (var sale in sales)
             {
                 var salesElement = new XElement("sale");
+                root.Add(salesElement);
+
                 var carElement = new XElement("car");
                 carElement.SetAttributeValue("make", sale.Car.Make);
                 carElement.SetAttributeValue("model", sale.Car.Model);
                 carElement.SetAttributeValue("travelled-distance", sale.Car.TravelledDistance);
                 salesElement.Add(carElement);
-                salesElement.Add("discount", sale.Discount);
-                salesElement.Add("customer-name", sale.Customer.Name);
-                salesElement.Add("price", sale.Price);
-                salesElement.Add("price-with-discount", sale.PriceWithDiscount);
+
+                var discount = new XElement("discount", sale.Discount);
+                var customerName = new XElement("customer-name", sale.Customer.Name);
+                var price = new XElement("price", sale.Price);
+                var priceWithDiscount = new XElement("price-with-discount", sale.PriceWithDiscount);
+
+                salesElement.Add(discount);
+                salesElement.Add(customerName);
+                salesElement.Add(price);
+                salesElement.Add(priceWithDiscount);
             }
 
             doc.Save("../../../CreatedXmlFiles/sales-discounts.xml");
