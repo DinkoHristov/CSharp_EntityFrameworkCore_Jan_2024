@@ -1,0 +1,13 @@
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\bin\Debug\netcoreapp2.1\ProductShop.deps.json
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\bin\Debug\netcoreapp2.1\ProductShop.runtimeconfig.json
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\bin\Debug\netcoreapp2.1\ProductShop.runtimeconfig.dev.json
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\bin\Debug\netcoreapp2.1\ProductShop.dll
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\bin\Debug\netcoreapp2.1\ProductShop.pdb
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.csproj.AssemblyReference.cache
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.AssemblyInfoInputs.cache
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.AssemblyInfo.cs
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.csproj.CoreCompileInputs.cache
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.dll
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.pdb
+D:\SoftUni\C#Code\C# DataBase\Entity Framework Core\08. Extensible Markup Language - XML - Exercise\01. Product Shop\ProductShop\obj\Debug\netcoreapp2.1\ProductShop.genruntimeconfig.cache
