@@ -1,122 +1,109 @@
 # Exercises: LINQ
 
-This document defines the **exercise assignments** for the ["Databases Advanced – EF Core" course @ Software University](https://softuni.bg/trainings/3221/entity-framework-core-february-2021).
+This document defines the **exercise assignments** for the [Databases Advanced - Entity Framework course @ SoftUni](https://softuni.bg/trainings/4540/entity-framework-core-june-2024)  
+You can check your solutions in [Judge](https://judge.softuni.org/Contests/3919/LINQ)
 
 # MusicHub
 
 People love listening to music, but they see that YouTube is getting older and older. You want to make people happy and you've decided to make a better version of YouTube – **MusicHub**. It's time for you to start coding. Good luck and impress us.
 
-1.
 ## MusicHub Database
 
 You must create a **database** for a **MusicHub**. It should look like this:
 
-![](RackMultipart20240206-1-zm544z_html_391199823e44f283.png)
+![](data:image/png;base64,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)
 
 ### Constraints
 
 Your **namespaces** should be:
 
-- **MusicHub** – for your **StartUp** class, if you have one
-- **MusicHub.Data** – for your **DbContext**
-- **MusicHub.Data.Models** – for your **Models**
+- MusicHub – for your **StartUp** class, if you have one
+- MusicHub.Data – for your **DbContext**
+- MusicHub.Data.Models – for your **Models**
 
 Your **models** should be:
 
-**Song**
+#### Song
 
-- **Id** – **Integer** , **Primary Key**
-- **Name** – **Text** with **max length 20** ( **required** )
-- **Duration** – **TimeSpan** ( **required** )
-- **CreatedOn** – **Date** ( **required** )
-- **Genre** ­– **Genre**** enumeration with possible values: "Blues, Rap, PopMusic, Rock, Jazz" (required)**
-- **AlbumId** – **Integer** , **Foreign key**
-- **Album** – **The song's album**
-- **WriterId** – **Integer, Foreign key**** (required)**
-- **Writer** – **The song's writer**
-- **Price** – **Decimal** ( **required** )
-- **SongPerformers** –Collection of type **SongPerformer**
+- **Id** – **integer**, **Primary Key**
+- **Name** – **text** with **max length 20** (**required**)
+- **Duration** – **TimeSpan** (**required**)
+- **CreatedOn** – **date** (**required**)
+- **Genre** ­– genre **enumeration** with possible values**:** **"****Blues, Rap, PopMusic, Rock, Jazz" (required)**
+- **AlbumId** – **integer**, **Foreign key**
+- **Album** – the **Song**'s **Album**
+- **WriterId** – **integer, Foreign key (required)**
+- **Writer** – the **Song**'s **Writer**
+- **Price** – **decimal** (**required**)
+- **SongPerformers** – a **c**ollection of type **SongPerformer**
 
-**Album**
+#### Album
 
-- **Id** – **Integer** , **Primary Key**
-- **Name** – **Text** with **max length 40** ( **required** )
-- **ReleaseDate** – **Date** ( **required** )
-- **Price** – **calculated property** ( **the sum of all song prices in the album** )
-- **ProducerId** – **integer, Foreign key**
-- **Producer** – **the album's producer**
-- **Songs** – collection of all **Songs** in the **Album**
+- **Id** – **integer**, **Primary Key**
+- **Name** – **text** with **max length 40** (**required**)
+- **ReleaseDate** – **date** (**required**)
+- **Price** – **calculated property** (the sum of all song prices in the album)
+- **ProducerId** – **integer**, **foreign key**
+- **Producer** – **the Album's Producer**
+- **Songs** – a collection of all **Songs** in the **Album**
 
-**Performer**
+#### Performer
 
-- **Id** – **Integer** , **Primary Key**
+- **Id** – **integer**, **Primary Key**
 - **FirstName** – **text** with **max length 20** (**required)**
 - **LastName** – **text** with **max length 20** (**required)**
-- **Age** – **Integer** ( **required** )
-- **NetWorth**** – ****decimal** ( **required** )
-- **PerformerSongs** – collection of type **SongPerformer**
+- **Age** – **integer** (**required**)
+- **NetWorth** **–** **decimal** (**required**)
+- **PerformerSongs** – a collection of type **SongPerformer**
 
-**Producer**
+#### Producer
 
-- **Id** – **Integer** , **Primary Key**
-- **Name** – **text** with **max length 30**** (****required)**
+- **Id** – **integer**, **Primary Key**
+- **Name** – **text** with **max length 30** **(**required**)**
 - **Pseudonym** – **text**
 - **PhoneNumber** – **text**
-- **Albums** – collection of type **Album**
+- **Albums** – a collection of type **Album**
 
-**Writer**
+#### Writer
 
-- **Id** – **Integer** , **Primary Key**
-- **Name** – **text** with **max length 20** (**required)**
+- **Id** – **integer**, **Primary Key**
+- **Name** – **text** with **max length 20** (required**)**
 - **Pseudonym** – **text**
-- **Songs** – collection of type **Song**
+- **Songs** – a collection of type **Song**
 
-**SongPerformer**
+#### SongPerformer
 
-- **SongId** – **Integer** , **Primary Key**
-- **Song** – the performer's **Song** ( **required** )
-- **PerformerId** – **Integer, Primary Key**
-- **Performer** – the song's **Performer (****required****)**
+- **SongId** – **integer**, **Primary Key**
+- **Song** – the performer's **Song** (**required**)
+- **PerformerId** – **integer**, **Primary Key**
+- **Performer** – the **Song**'s **Performer (required)**
 
-**Table relations**
+### Table relations
 
 - **One Song** can have **many Performers**
-- **One Permormer** canhave **many Songs**
+- **One Permormer** can have **many Songs**
 - **One Writer** can have **many Songs**
 - **One Album** can have **many Songs**
 - **One Producer** can have **many Albums**
 
-You will need a constructor, accepting **DbContextOptions** to test your solution in **Judge**!
+**NOTE:** You will need a constructor, accepting **DbContextOptions** to test your solution in **Judge**!
 
-1.
-## All Albums Produced By Given Producer
+## All Albums Produced by Given Producer
 
-You need to write method string ExportAlbumsInfo(MusicHubDbContext context, int producerId) in the **StartUp** class that receives a **Producer Id**. Export **all albums** which are **produced by** the provided **Producer Id**. For each **Album** , get the **Name** , **Release date** in format " **MM/dd/yyyy**", **Producer Name** , the **Album Songs** with each **Song Name** , **Price** ( **formatted to the second digit** ) and the **Song Writer Name**. **Sort** the **Songs** by **Song**** Name**(**descending**) and by**Writer**(**ascending**). At the end export**the Total Album Price **with exactly** two digits after the decimal place **.** Sort **the** Albums **by their** Total ****Price** ( **descending** ).
+You need to write method **string ExportAlbumsInfo(MusicHubDbContext context, int producerId)** in the **StartUp** class that receives a **ProducerId**. Export **all albums** which are **produced by** the provided **ProducerId**. For each **Album**, get the **Name**, **ReleaseDate** in format the "**MM/dd/yyyy**", **ProducerName**, the **Album Songs** with each **Song Name**, **Price** (**formatted to the second digit**) and the **Song WriterName**. **Sort** the **Songs** by **Song** **Name** (**descending**) and by **Writer** (**ascending**). At the end export **the Total Album Price** with exactly **two digits after the decimal place**. **Sort** the **Albums** by their **Total** **Price** (**descending**).
 
-**Example**
+### Example
 
-| **Output(producerId = 9)** |
+| **Output (producerId = 9)** |
 | --- |
-| -AlbumName: Devil's advocate-ReleaseDate: 07/21/2018-ProducerName: Evgeni Dimitrov-Songs:---#1---SongName: Numb---Price: 13.99---Writer: Kara-lynn Sharpous---#2---SongName: Ibuprofen---Price: 26.50---Writer: Stanford Daykin-AlbumPrice: 40.49… |
+| \-AlbumName: Devil's advocate<br><br>\-ReleaseDate: 07/21/2018<br><br>\-ProducerName: Evgeni Dimitrov<br><br>\-Songs:<br><br>\---#1<br><br>\---SongName: Numb<br><br>\---Price: 13.99<br><br>\---Writer: Kara-lynn Sharpous<br><br>\---#2<br><br>\---SongName: Ibuprofen<br><br>\---Price: 26.50<br><br>\---Writer: Stanford Daykin<br><br>\-AlbumPrice: 40.49<br><br>… |
 
-1.
 ## Songs Above Given Duration
 
-You need to write method string ExportSongsAboveDuration(MusicHubDbContext context, int duration) in the **StartUp** class that receives **Song** duration( **integer, in seconds** ). Export the songs which are **above** the given duration. For each **Song** , export its **Name** , **Performer Full Name** , **Writer Name** , **Album**** Producer **and** Duration**(**in format**("**c**")).**Sort **the** Songs **by their** Name**(**ascending**), by**Writer**(**ascending**) and by**Performer**(**ascending**).
+You need to write method **string ExportSongsAboveDuration(MusicHubDbContext context, int duration)** in the **StartUp** class that receives **Song** duration (**integer, in seconds**). Export the songs which are **above** the given duration. For each **Song**, export its **Name**, **Performer Full Name**, **Writer Name**, **Album** **Producer** and **Duration** (**in format**("**c**")). **Sort** the **Songs** by their **Name** (**ascending**), and then by **Writer** (**ascending**). If a **Song** has more than one **Performer**, export all performers and sort them (**ascending, alphabetically**). If there are no **Performers** for a given song, don't print the "**\---Performer**" line at all.
 
-**Example**
+### Example
 
-| **Output(duration = 4)** |
+| **Output (duration = 4)** |
 | --- |
-| -Song #1---SongName: Away---Writer: Norina Renihan---Performer: Lula Zuan---AlbumProducer: Georgi Milkov---Duration: 00:05:35-Song #2---SongName: Bentasil---Writer: Mik Jonathan---Performer: Zabrina Amor---AlbumProducer: Dobromir Slavchev---Duration: 00:04:03
- … |
-
-![Shape3](RackMultipart20240206-1-zm544z_html_6f222e41d7629786.gif) ![Shape2](RackMultipart20240206-1-zm544z_html_5f0f2ddacbac70d2.gif) ![Shape1](RackMultipart20240206-1-zm544z_html_51bd00be29b85496.gif) ![Shape4](RackMultipart20240206-1-zm544z_html_f746d52952cd7e91.gif)[![](RackMultipart20240206-1-zm544z_html_3aa486326bfa75e9.png)](https://softuni.org/)
-
-Follow us:
-
-© SoftUni – [https://softuni.org](https://softuni.org/). Copyrighted document. Unauthorized copy, reproduction or use is not permitted.
-
-[![](RackMultipart20240206-1-zm544z_html_9b17934bfedeb713.png)](https://softuni.org/)[![](RackMultipart20240206-1-zm544z_html_c9db196993f48ff8.png)](https://softuni.bg/)[![Software University @ Facebook](RackMultipart20240206-1-zm544z_html_94be3df36d913358.png)](https://www.facebook.com/softuni.org)[![](RackMultipart20240206-1-zm544z_html_7e8e605369b4ad74.png)](https://www.instagram.com/softuni_org)[![Software University @ Twitter](RackMultipart20240206-1-zm544z_html_ff9c629b0a21eb6b.png)](https://twitter.com/SoftUni1)[![Software University @ YouTube](RackMultipart20240206-1-zm544z_html_7db86a748da0e575.png)](https://www.youtube.com/channel/UCqvOk8tYzfRS-eDy4vs3UyA)[![](RackMultipart20240206-1-zm544z_html_95554caa563bbdb3.png)](https://www.linkedin.com/company/softuni/)[![](RackMultipart20240206-1-zm544z_html_4df51bfadcab813.png)](https://github.com/SoftUni)[![Software University: Email Us](RackMultipart20240206-1-zm544z_html_d7fa82ab7332f3fa.png)](mailto:info@softuni.org)
-
-Page 2 of 2
+| \-Song #1<br><br>\---SongName: Away<br><br>\---Writer: Norina Renihan<br><br>\---Performer: Lula Zuan<br><br>\---AlbumProducer: Georgi Milkov<br><br>\---Duration: 00:05:35<br><br>\-Song #2<br><br>\---SongName: Bentasil<br><br>\---Writer: Mik Jonathan<br><br>\---Performer: Zabrina Amor<br><br>\---AlbumProducer: Dobromir Slavchev<br><br>\---Duration: 00:04:03<br><br>\-Song #3<br><br>\---SongName: Carvedilol<br><br>\---Writer: Chloe Trayhorn<br><br>\---Performer: Rhody Bettam<br><br>\---Performer: Tine Althorp<br><br>\---AlbumProducer: Evtim Miloshev<br><br>\---Duration: 00:02:39  <br>… |

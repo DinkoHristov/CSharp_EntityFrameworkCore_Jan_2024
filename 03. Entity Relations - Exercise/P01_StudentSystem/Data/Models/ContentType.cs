@@ -2,7 +2,7 @@
 {
     public enum ContentType
     {
-        Application,
+        Application, 
         Pdf,
         Zip
     }

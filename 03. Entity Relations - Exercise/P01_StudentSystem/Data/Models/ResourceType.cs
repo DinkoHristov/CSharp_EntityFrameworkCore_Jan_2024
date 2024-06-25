@@ -2,8 +2,8 @@
 {
     public enum ResourceType
     {
-        Video,
-        Presentation,
+        Video, 
+        Presentation, 
         Document,
         Other
     }

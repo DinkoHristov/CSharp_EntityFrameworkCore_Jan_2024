@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace P01_StudentSystem.Data.Models
 {
     public class Resource
     {
+        [Key]
         public int ResourceId { get; set; }
 
         [Required]
@@ -12,15 +12,14 @@ namespace P01_StudentSystem.Data.Models
         public string Name { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(MAX)")]
         public string Url { get; set; }
 
         [Required]
-        public ResourceType ResourceType  { get; set; }
+        public ResourceType ResourceType { get; set; }
 
         [Required]
         public int CourseId { get; set; }
 
-        public Course Course { get; set; }
+        public virtual Course Course { get; set; }
     }
 }
